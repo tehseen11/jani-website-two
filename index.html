@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janitha | DevOps & Cloud Automation Engineer</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portfolio of Janitha, a passionate DevOps Engineer specializing in AWS, Kubernetes, Terraform, Docker, and CI/CD Automation.">
+    <meta name="keywords" content="DevOps, Cloud Engineer, Janitha, AWS, Kubernetes, Terraform, Ansible, CI/CD, Linux, Docker, Automation">
+    <meta name="author" content="Janitha">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/Janitha30">
+    <meta property="og:title" content="Janitha | DevOps & Cloud Engineer">
+    <meta property="og:description" content="Explore infrastructure automation, cloud architectures, and CI/CD pipelines engineered by Janitha.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Loading Preloader -->
+    <div id="preloader">
+        <div class="loader">
+            <div class="spinner"></div>
+            <p>Initializing Environment...</p>
+        </div>
+    </div>
+
+    <!-- Background Canvas Particles -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-accent">&lt;</span>Janitha<span class="logo-accent">.io /&gt;</span>
+            </a>
+            
+            <nav class="nav-links" id="nav-links">
+                <a href="#about" class="nav-link active">About</a>
+                <a href="#journey" class="nav-link">Journey</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#certifications" class="nav-link">Certifications</a>
+                <a href="#contact" class="nav-link nav-cta">Contact Me</a>
+            </nav>
+
+            <button class="mobile-toggle" aria-label="Toggle navigation menu" id="mobile-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">System Status: Active</span>
+                <h1 class="hero-title">Hi, I'm <span class="highlight">Janitha</span></h1>
+                <h2 class="hero-subtitle">
+                    I am a <span id="typing-text"></span><span class="cursor">|</span>
+                </h2>
+                <p class="hero-description">
+                    Building robust, scalable pipelines and automating complex cloud infrastructure. Specializing in modern DevOps methodologies to accelerate software delivery and optimize system reliability.
+                </p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Contact Me</a>
+                    <a href="#projects" class="btn btn-secondary">View Projects</a>
+                    <a href="mailto:jani2001mj@gmail.com?subject=Resume Request - DevOps Engineer" class="btn btn-outline">
+                        <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download Resume
+                    </a>
+                </div>
+                <div class="hero-socials">
+                    <a href="https://github.com/Janitha30" target="_blank" rel="noopener" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/janitha" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                    </a>
+                    <a href="mailto:jani2001mj@gmail.com" aria-label="Email">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-image-container">
+                <div class="profile-card-glow"></div>
+                <div class="profile-card">
+                    <img src="profile.jpg" alt="Janitha" class="profile-image" loading="eager" onerror="this.src='https://images.unsplash.com/photo-1618401471353-b98aedd07871?auto=format&fit=crop&w=500&q=80'">
+                    <div class="profile-console">
+                        <span class="console-dot red"></span>
+                        <span class="console-dot yellow"></span>
+                        <span class="console-dot green"></span>
+                        <p class="console-text">$ node sys_check.js</p>
+                        <p class="console-response">Status: Optimal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section scroll-reveal" id="about">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-subtitle">Profile Overview</span>
+                <h2 class="section-title">About Me</h2>
+                <div class="underline"></div>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-text-content">
+                    <p class="about-lead">
+                        Passionate DevOps Engineer with experience in Linux, AWS, Docker, Kubernetes, Jenkins, Terraform, Ansible, CI/CD, and Infrastructure Automation.
+                    </p>
+                    <p class="about-body">
+                        Focused on building scalable cloud-native solutions, automating deployments, and improving software delivery pipelines. I aim to bridge the gap between development and operations through consistent monitoring, high-efficiency configuration management, and robust infrastructure-as-code principles.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-box">
+                            <span class="stat-number">AWS</span>
+                            <span class="stat-label">Cloud Deployment Focus</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">IaC</span>
+                            <span class="stat-label">Declarative Management</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">CI/CD</span>
+                            <span class="stat-label">Automated Delivery</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-highlights">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">⚡</div>
+                        <h3>Philosophy</h3>
+                        <p>If it has to be executed twice, automate it. Infrastructure should be declarative, modular, and fully version-controlled.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon">🛡️</div>
+                        <h3>Security & Scale</h3>
+                        <p>Integrating security checks into pipelines early (DevSecOps) and architecting highly resilient container structures.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DevOps Journey Section -->
+    <section class="journey-section scroll-reveal" id="journey">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-subtitle">Roadmap</span>
+                <h2 class="section-title">DevOps Journey</h2>
+                <div class="underline"></div>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-bar"></div>
+                
+                <!-- Journey Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-card">
+                        <span class="timeline-tech">Foundational OS</span>
+                        <h3>Linux</h3>
+                        <p>Mastered kernel core systems, bash scripting, file permissions, users, and server setup.</p>
+                    </div>
+                </div>
+
+                <!-- Journey Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-card">
+                        <span class="timeline-tech">Version Control</span>
+                        <h3>Git & GitHub</h3>
+                        <p>Learned workflow orchestration, merge conflict resolution, branch protection rules, and PR flows.</p>
+                    </div>
+                </div>
+
+                <!-- Journey Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-card">
+                        <span class="timeline-tech">Containerization</span>
+                        <h3>Docker</h3>
+                        <p>Built isolated environments, writing multi-stage optimized Dockerfiles, and managing networks.</p>
+                    </div>
+                </div>
+
+                <!-- Journey Item 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-card">
+                        <span class="timeline-tech">Continuous Integration</span>
+                        <h3>Jenkins</h3>
+                        <p>Configured declarative pipelines-as-code, integrated static analysis, and automated deployments.</p>
+                    </div>
+                </div>
+
+                <!-- Journey Item 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-card">
+                        <span class="timeline-tech">Cloud Computing</span>
+                        <h3>AWS</h3>
+                        <p>Provisioning global services: IAM policies, secure VPC subnets, dynamic EC2 provisioning, and S3 resources.</p>
+                    </div>
+                </div>
+
+                <!-- Journey Item 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">6</div>
+                    <div class="timeline-card">
+                        <span class="timeline-tech">Infrastructure as Code</span>
+                        <h3>Terraform</h3>
+                        <p>Constructed repeatable structural infrastructure utilizing robust environment variables and workspaces.</p>
+                    </div>
+                </div>
+
+                <!-- Journey Item 7 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">7</div>
+                    <div class="timeline-card">
+                        <span class="timeline-tech">Orchestration</span>
+                        <h3>Kubernetes</h3>
+                        <p>Configured multi-tier clustering, custom service definitions, ingress, storage, and configurations.</p>
+                    </div>
+                </div>
+
+                <!-- Journey Item 8 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">8</div>
+                    <div class="timeline-card">
+                        <span class="timeline-tech">Telemetry</span>
+                        <h3>Monitoring</h3>
+                        <p>Instrumenting metrics logging pipelines utilizing system collectors, scraper engines, and visual consoles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section scroll-reveal" id="skills">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-subtitle">Technical Competency</span>
+                <h2 class="section-title">Skills & Toolchain</h2>
+                <div class="underline"></div>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Cloud -->
+                <div class="skill-group-card">
+                    <div class="skill-header">
+                        <h3>Cloud Environments</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name-percentage"><span>AWS</span><span class="pct">90%</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="--width: 90%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name-percentage"><span>Azure</span><span class="pct">65%</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="--width: 65%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Containers -->
+                <div class="skill-group-card">
+                    <div class="skill-header">
+                        <h3>Containers & Orchestration</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name-percentage"><span>Docker</span><span class="pct">85%</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="--width: 85%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name-percentage"><span>Kubernetes</span><span class="pct">75%</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="--width: 75%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CI/CD -->
+                <div class="skill-group-card">
+                    <div class="skill-header">
+                        <h3>Continuous Integration</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name-percentage"><span>Jenkins</span><span class="pct">80%</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="--width: 80%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name-percentage"><span>GitHub Actions</span><span class="pct">85%</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="--width: 85%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- IaC -->
+                <div class="skill-group-card">
+                    <div class="skill-header">
+                        <h3>Infrastructure as Code</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name-percentage"><span>Terraform</span><span class="pct">80%</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="--width: 80%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name-percentage"><span>Ansible</span><span class="pct">75%</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="--width: 75%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Monitoring -->
+                <div class="skill-group-card">
+                    <div class="skill-header">
+                        <h3>Monitoring & Telemetry</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name-percentage"><span>Prometheus</span><span class="pct">75%</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="--width: 75%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name-percentage"><span>Grafana</span><span class="pct">80%</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="--width: 80%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Programming -->
+                <div class="skill-group-card">
+                    <div class="skill-header">
+                        <h3>Development & Systems</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name-percentage"><span>Python</span><span class="pct">70%</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="--width: 70%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name-percentage"><span>Bash Scripting</span><span class="pct">85%</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="--width: 85%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Version Control -->
+                <div class="skill-group-card">
+                    <div class="skill-header">
+                        <h3>Collaboration</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name-percentage"><span>Git</span><span class="pct">90%</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="--width: 90%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name-percentage"><span>GitHub</span><span class="pct">85%</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="--width: 85%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- OS -->
+                <div class="skill-group-card">
+                    <div class="skill-header">
+                        <h3>Operating Systems</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name-percentage"><span>Linux Administration</span><span class="pct">85%</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="--width: 85%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section scroll-reveal" id="projects">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-subtitle">Real-world Works</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="underline"></div>
+            </div>
+
+            <!-- Dynanic GitHub Repo Loader Container -->
+            <div id="github-projects-grid" class="projects-grid">
+                <!-- API elements injected by JavaScript. Fallback static cards exist here. -->
+                <div class="loading-placeholder">
+                    <div class="inner-loader"></div>
+                    <p>Contacting GitHub API...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications-section scroll-reveal" id="certifications">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-subtitle">Credentials</span>
+                <h2 class="section-title">Certifications & Awards</h2>
+                <div class="underline"></div>
+            </div>
+
+            <div class="certs-layout">
+                <!-- Excellence Award (Prominent Card) -->
+                <div class="award-card-wrapper">
+                    <div class="award-card">
+                        <div class="award-badge-ribbon">Excellence</div>
+                        <div class="award-icon-box">🏆</div>
+                        <div class="award-body">
+                            <span class="award-issuer">UnifyCX</span>
+                            <h3>Excellence Award</h3>
+                            <span class="award-status achieved">Status: Achieved</span>
+                            <p class="award-description">
+                                Awarded for outstanding performance, dedication, and contribution towards team-wide optimization, automation workflows, and persistent delivery.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications In-Progress Grid -->
+                <div class="learning-grid">
+                    <div class="learning-header">
+                        <h3>Development & Certification Paths</h3>
+                        <p>Currently actively learning and pursuing key industry qualifications.</p>
+                    </div>
+                    
+                    <div class="learning-paths-list">
+                        <!-- Path 1 -->
+                        <div class="learning-card">
+                            <div class="learning-icon">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="#0ea5e9"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95A5.47 5.47 0 0 1 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z"/></svg>
+                            </div>
+                            <div class="learning-details">
+                                <h4>AWS Cloud Practitioner</h4>
+                                <span class="status-badge learning">Learning</span>
+                            </div>
+                        </div>
+
+                        <!-- Path 2 -->
+                        <div class="learning-card">
+                            <div class="learning-icon">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="#8b5cf6"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                            </div>
+                            <div class="learning-details">
+                                <h4>Terraform Associate</h4>
+                                <span class="status-badge learning">Learning</span>
+                            </div>
+                        </div>
+
+                        <!-- Path 3 -->
+                        <div class="learning-card">
+                            <div class="learning-icon">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="#10b981"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v4h2v-4h-2zm0-4v2h2V7h-2z"/></svg>
+                            </div>
+                            <div class="learning-details">
+                                <h4>Kubernetes Administrator (CKA)</h4>
+                                <span class="status-badge learning">Learning</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section scroll-reveal" id="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-subtitle">Get In Touch</span>
+                <h2 class="section-title">Contact Infrastructure</h2>
+                <div class="underline"></div>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Info cards left side -->
+                <div class="contact-info">
+                    <h3>Let's collaborate on your next pipeline automation</h3>
+                    <p>I am generally open to discussing DevOps roles, infrastructure redesigns, or pipeline optimization problems.</p>
+                    
+                    <div class="contact-details-list">
+                        <!-- Item: Email -->
+                        <div class="contact-item-card">
+                            <div class="item-icon">📬</div>
+                            <div class="item-text">
+                                <span class="item-label">Mail Delivery Endpoint</span>
+                                <a href="mailto:jani2001mj@gmail.com" class="item-link">jani2001mj@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <!-- Item: Phone -->
+                        <div class="contact-item-card">
+                            <div class="item-icon">📞</div>
+                            <div class="item-text">
+                                <span class="item-label">Phone Direct Connect</span>
+                                <a href="tel:+918277199154" class="item-link">+91 8277199154</a>
+                            </div>
+                        </div>
+
+                        <!-- Item: Git -->
+                        <div class="contact-item-card">
+                            <div class="item-icon">💻</div>
+                            <div class="item-text">
+                                <span class="item-label">Source Control Hub</span>
+                                <a href="https://github.com/Janitha30" target="_blank" rel="noopener" class="item-link">github.com/Janitha30</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive mockup Form -->
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); handleFormSubmit();">
+                        <div class="form-group">
+                            <label for="form-name">Sender Identity (Name)</label>
+                            <input type="text" id="form-name" required placeholder="eg. John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-email">Callback Address (Email)</label>
+                            <input type="email" id="form-email" required placeholder="eg. john@company.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-msg">Payload Message</label>
+                            <textarea id="form-msg" rows="5" required placeholder="Provide infrastructure requirements or project details..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">
+                            Dispatch Payload Message
+                        </button>
+                        <div class="form-response-msg" id="form-response"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="copyright">&copy; 2026 Janitha | DevOps Engineer</p>
+            <div class="footer-links">
+                <a href="https://github.com/Janitha30" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                </a>
+                <a href="mailto:jani2001mj@gmail.com" aria-label="Email">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Entrypoint -->
+    <script src="script.js"></script>
+</body>
+</html>
