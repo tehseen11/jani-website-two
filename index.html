@@ -1,590 +1,1257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Janitha | DevOps & Cloud Automation Engineer</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Portfolio of Janitha, a passionate DevOps Engineer specializing in AWS, Kubernetes, Terraform, Docker, and CI/CD Automation.">
-    <meta name="keywords" content="DevOps, Cloud Engineer, Janitha, AWS, Kubernetes, Terraform, Ansible, CI/CD, Linux, Docker, Automation">
-    <meta name="author" content="Janitha">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://github.com/Janitha30">
-    <meta property="og:title" content="Janitha | DevOps & Cloud Engineer">
-    <meta property="og:description" content="Explore infrastructure automation, cloud architectures, and CI/CD pipelines engineered by Janitha.">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Janitha | DevOps & Cloud Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080c14;
+    --surface: #0d1421;
+    --surface2: #111827;
+    --border: #1e2d45;
+    --accent: #00d4ff;
+    --accent2: #7c3aed;
+    --accent3: #10b981;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --card: #0f1928;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 0 5%;
+    height: 64px;
+    background: rgba(8,12,20,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-links {
+    display:flex; gap:2rem; list-style:none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+  .hamburger span { width:24px; height:2px; background:var(--text); transition:0.3s; border-radius:2px; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 80px 5% 60px;
+    position: relative;
+    overflow: hidden;
+    gap: 4rem;
+  }
+
+  .hero-bg {
+    position: absolute; inset:0; pointer-events:none; overflow:hidden;
+  }
+
+  .hero-bg::before {
+    content:'';
+    position:absolute;
+    width:600px; height:600px;
+    border-radius:50%;
+    background: radial-gradient(circle, rgba(0,212,255,0.07) 0%, transparent 70%);
+    top:-200px; right:-100px;
+    animation: pulse 6s ease-in-out infinite;
+  }
+
+  .hero-bg::after {
+    content:'';
+    position:absolute;
+    width:400px; height:400px;
+    border-radius:50%;
+    background: radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%);
+    bottom:-100px; left:30%;
+    animation: pulse 8s ease-in-out infinite reverse;
+  }
+
+  @keyframes pulse {
+    0%,100%{ transform:scale(1) translate(0,0); }
+    50%{ transform:scale(1.1) translate(20px,20px); }
+  }
+
+  .hero-grid-overlay {
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events:none;
+  }
+
+  .hero-content { position:relative; z-index:1; }
+
+  .hero-tag {
+    display:inline-flex; align-items:center; gap:0.5rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.75rem;
+    color:var(--accent);
+    background: rgba(0,212,255,0.08);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius:100px;
+    padding:0.35rem 1rem;
+    margin-bottom:1.5rem;
+    letter-spacing:0.04em;
+    opacity:0;
+    animation: fadeSlideUp 0.6s 0.2s forwards;
+  }
+
+  .hero-tag .dot {
+    width:6px; height:6px; border-radius:50%;
+    background:var(--accent3);
+    animation: blink 1.5s infinite;
+  }
+
+  @keyframes blink { 0%,100%{ opacity:1; } 50%{ opacity:0.2; } }
+
+  .hero-name {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+    opacity:0;
+    animation: fadeSlideUp 0.6s 0.4s forwards;
+  }
+
+  .hero-name span {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+
+  .hero-role {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    height: 1.6em;
+    opacity:0;
+    animation: fadeSlideUp 0.6s 0.6s forwards;
+  }
+
+  .typed-text { color: var(--accent); }
+  .cursor { animation: blink 1s infinite; color:var(--accent); }
+
+  .hero-desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    opacity:0;
+    animation: fadeSlideUp 0.6s 0.8s forwards;
+  }
+
+  .hero-actions {
+    display:flex; gap:1rem; flex-wrap:wrap;
+    opacity:0;
+    animation: fadeSlideUp 0.6s 1s forwards;
+  }
+
+  .btn {
+    display:inline-flex; align-items:center; gap:0.5rem;
+    padding: 0.75rem 1.75rem;
+    border-radius:8px;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:0.9rem;
+    font-weight:600;
+    text-decoration:none;
+    transition:all 0.25s;
+    cursor:pointer;
+    border:none;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #0099cc);
+    color:#080c14;
+  }
+
+  .btn-primary:hover {
+    transform:translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,212,255,0.35);
+  }
+
+  .btn-outline {
+    background:transparent;
+    color:var(--text);
+    border:1px solid var(--border);
+  }
+
+  .btn-outline:hover {
+    border-color:var(--accent);
+    color:var(--accent);
+    transform:translateY(-2px);
+  }
+
+  .hero-socials {
+    display:flex; gap:1rem; margin-top:2.5rem;
+    opacity:0;
+    animation: fadeSlideUp 0.6s 1.2s forwards;
+  }
+
+  .social-link {
+    width:40px; height:40px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted);
+    text-decoration:none;
+    transition:all 0.25s;
+    font-size:1.1rem;
+  }
+
+  .social-link:hover {
+    border-color:var(--accent);
+    color:var(--accent);
+    background:rgba(0,212,255,0.08);
+    transform:translateY(-2px);
+  }
+
+  /* Hero Image */
+  .hero-visual {
+    position:relative; z-index:1;
+    display:flex; justify-content:center; align-items:center;
+    opacity:0;
+    animation: fadeIn 0.8s 0.6s forwards;
+  }
+
+  @keyframes fadeIn { to{ opacity:1; } }
+
+  .profile-ring {
+    position:relative;
+    width: clamp(260px, 30vw, 380px);
+    aspect-ratio: 1;
+  }
+
+  .profile-ring::before {
+    content:'';
+    position:absolute; inset:-3px;
+    border-radius:50%;
+    background: conic-gradient(from 0deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
+    animation: spin 4s linear infinite;
+    z-index:0;
+  }
+
+  @keyframes spin { to{ transform:rotate(360deg); } }
+
+  .profile-ring::after {
+    content:'';
+    position:absolute; inset:2px;
+    border-radius:50%;
+    background:var(--bg);
+    z-index:1;
+  }
+
+  .profile-img {
+    position:relative; z-index:2;
+    width:100%; height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    display:block;
+  }
+
+  .hero-stats {
+    display:flex; gap:1.5rem; margin-top:2rem; flex-wrap:wrap;
+    opacity:0;
+    animation: fadeSlideUp 0.6s 1.4s forwards;
+  }
+
+  .stat {
+    text-align:center;
+    padding:0.75rem 1.25rem;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:10px;
+  }
+
+  .stat-num {
+    font-size:1.5rem; font-weight:700;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    background-clip:text;
+    font-family:'JetBrains Mono',monospace;
+  }
+
+  .stat-label { font-size:0.7rem; color:var(--muted); margin-top:0.2rem; letter-spacing:0.05em; text-transform:uppercase; }
+
+  @keyframes fadeSlideUp {
+    from{ opacity:0; transform:translateY(20px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  /* ── FLOATING BADGES ── */
+  .floating-badge {
+    position:absolute; z-index:3;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:0.6rem 1rem;
+    display:flex; align-items:center; gap:0.5rem;
+    font-size:0.75rem; font-weight:600;
+    white-space:nowrap;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+
+  .badge-icon { font-size:1.1rem; }
+
+  .badge-tl {
+    top:10%; left:-5%;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .badge-br {
+    bottom:15%; right:-5%;
+    animation: float 3.5s ease-in-out infinite 0.5s;
+  }
+
+  @keyframes float {
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-10px); }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 5%; }
+
+  .section-label {
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.75rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:0.75rem;
+    display:flex; align-items:center; gap:0.75rem;
+  }
+
+  .section-label::after {
+    content:'';
+    flex:1; max-width:60px; height:1px;
+    background:linear-gradient(90deg,var(--accent),transparent);
+  }
+
+  .section-title {
+    font-size:clamp(1.75rem,3.5vw,2.5rem);
+    font-weight:700;
+    letter-spacing:-0.03em;
+    margin-bottom:1rem;
+    line-height:1.1;
+  }
+
+  .section-desc {
+    color:var(--muted);
+    font-size:1rem;
+    line-height:1.7;
+    max-width:540px;
+    margin-bottom:3.5rem;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--surface);
+    position:relative; overflow:hidden;
+  }
+
+  .about-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center;
+  }
+
+  .about-card {
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:2rem;
+    margin-bottom:1.5rem;
+    transition:all 0.3s;
+    position:relative; overflow:hidden;
+  }
+
+  .about-card::before {
+    content:'';
+    position:absolute; top:0; left:0; right:0; height:2px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    transform:scaleX(0); transform-origin:left;
+    transition:transform 0.3s;
+  }
+
+  .about-card:hover { border-color:rgba(0,212,255,0.3); transform:translateY(-3px); }
+  .about-card:hover::before { transform:scaleX(1); }
+
+  .about-card-icon { font-size:1.8rem; margin-bottom:0.75rem; }
+  .about-card h3 { font-size:1.05rem; font-weight:600; margin-bottom:0.5rem; }
+  .about-card p { color:var(--muted); font-size:0.9rem; line-height:1.6; }
+
+  .about-pills { display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:1.5rem; }
+
+  .pill {
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem;
+    padding:0.3rem 0.75rem;
+    border-radius:100px;
+    border:1px solid var(--border);
+    color:var(--muted);
+    background:var(--surface2);
+    transition:0.2s;
+  }
+
+  .pill:hover { border-color:var(--accent); color:var(--accent); }
+
+  /* ── JOURNEY ── */
+  #journey { position:relative; }
+
+  .journey-timeline {
+    position:relative;
+    max-width:900px; margin:0 auto;
+  }
+
+  .timeline-line {
+    position:absolute; left:50%; top:0; bottom:0;
+    width:1px; background:var(--border);
+    transform:translateX(-50%);
+  }
+
+  .timeline-line-fill {
+    position:absolute; top:0; left:0; right:0;
+    background:linear-gradient(180deg,var(--accent),var(--accent2));
+    width:100%;
+    transition:height 0.5s;
+  }
+
+  .journey-item {
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:3rem; margin-bottom:3rem; position:relative;
+  }
+
+  .journey-item:nth-child(odd) .journey-card { grid-column:1; grid-row:1; }
+  .journey-item:nth-child(odd) .journey-spacer { grid-column:2; }
+  .journey-item:nth-child(even) .journey-card { grid-column:2; grid-row:1; }
+  .journey-item:nth-child(even) .journey-spacer { grid-column:1; }
+
+  .journey-dot {
+    position:absolute; left:50%; top:1.5rem;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:var(--accent);
+    border:2px solid var(--bg);
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 12px rgba(0,212,255,0.5);
+    z-index:2;
+  }
+
+  .journey-card {
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:1.5rem;
+    transition:all 0.3s;
+    opacity:0;
+    transform:translateY(30px);
+  }
+
+  .journey-card.visible {
+    opacity:1; transform:translateY(0);
+    transition:all 0.6s cubic-bezier(0.23,1,0.32,1);
+  }
+
+  .journey-card:hover {
+    border-color:rgba(0,212,255,0.3);
+    box-shadow:0 8px 30px rgba(0,0,0,0.4);
+    transform:translateY(-4px);
+  }
+
+  .journey-num {
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem;
+    color:var(--accent);
+    margin-bottom:0.4rem;
+    letter-spacing:0.1em;
+  }
+
+  .journey-tech {
+    font-size:0.7rem;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:0.3rem;
+  }
+
+  .journey-card h3 { font-size:1.1rem; font-weight:600; margin-bottom:0.5rem; }
+  .journey-card p { color:var(--muted); font-size:0.88rem; line-height:1.6; }
+
+  /* ── SKILLS ── */
+  #skills { background:var(--surface); }
+
+  .skills-grid {
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+    gap:1.5rem;
+  }
+
+  .skill-group {
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:1.5rem;
+    transition:all 0.3s;
+  }
+
+  .skill-group:hover { border-color:rgba(0,212,255,0.25); transform:translateY(-3px); }
+
+  .skill-group-title {
+    font-size:0.75rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+    margin-bottom:1.25rem;
+    display:flex; align-items:center; gap:0.5rem;
+  }
+
+  .skill-group-title::before {
+    content:''; width:8px; height:8px;
+    border-radius:2px; background:var(--accent);
+  }
+
+  .skill-item { margin-bottom:1rem; }
+  .skill-item:last-child { margin-bottom:0; }
+
+  .skill-header {
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:0.5rem;
+  }
+
+  .skill-name { font-size:0.9rem; font-weight:500; }
+
+  .skill-pct {
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.75rem; color:var(--accent);
+  }
+
+  .skill-bar {
+    height:4px; background:var(--border);
+    border-radius:2px; overflow:hidden;
+  }
+
+  .skill-fill {
+    height:100%;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    border-radius:2px;
+    width:0; transition:width 1.2s cubic-bezier(0.23,1,0.32,1);
+  }
+
+  /* ── PROJECTS ── */
+  #projects { }
+
+  .projects-grid {
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(340px,1fr));
+    gap:1.5rem;
+  }
+
+  .project-card {
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:2rem;
+    transition:all 0.3s;
+    position:relative; overflow:hidden;
+    display:flex; flex-direction:column; gap:1rem;
+  }
+
+  .project-card::after {
+    content:'';
+    position:absolute;
+    top:0; left:0; right:0; bottom:0;
+    background:linear-gradient(135deg, rgba(0,212,255,0.04), transparent);
+    opacity:0; transition:opacity 0.3s;
+    pointer-events:none;
+  }
+
+  .project-card:hover { border-color:rgba(0,212,255,0.35); transform:translateY(-5px); box-shadow:0 16px 40px rgba(0,0,0,0.5); }
+  .project-card:hover::after { opacity:1; }
+
+  .project-icon {
+    width:48px; height:48px;
+    border-radius:12px;
+    background:rgba(0,212,255,0.1);
+    border:1px solid rgba(0,212,255,0.2);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.4rem;
+  }
+
+  .project-card h3 { font-size:1.1rem; font-weight:600; }
+  .project-card p { color:var(--muted); font-size:0.88rem; line-height:1.65; flex:1; }
+
+  .project-tags { display:flex; flex-wrap:wrap; gap:0.5rem; }
+
+  .project-tag {
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.68rem;
+    padding:0.25rem 0.65rem;
+    border-radius:6px;
+    background:var(--surface2);
+    border:1px solid var(--border);
+    color:var(--muted);
+  }
+
+  .project-link {
+    display:inline-flex; align-items:center; gap:0.4rem;
+    font-size:0.8rem; color:var(--accent);
+    text-decoration:none; font-weight:500;
+    margin-top:auto; transition:gap 0.2s;
+  }
+
+  .project-link:hover { gap:0.7rem; }
+
+  /* ── CERTIFICATIONS ── */
+  #certifications { background:var(--surface); }
+
+  .cert-grid {
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
+    gap:1.5rem;
+  }
+
+  .cert-card {
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:1.75rem;
+    text-align:center;
+    transition:all 0.3s;
+    position:relative; overflow:hidden;
+  }
+
+  .cert-card.achieved {
+    border-color:rgba(16,185,129,0.3);
+  }
+
+  .cert-card.achieved::before {
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse at top, rgba(16,185,129,0.06), transparent 70%);
+    pointer-events:none;
+  }
+
+  .cert-card:hover { transform:translateY(-4px); box-shadow:0 12px 30px rgba(0,0,0,0.5); }
+
+  .cert-icon { font-size:2.5rem; margin-bottom:1rem; }
+  .cert-card h3 { font-size:1rem; font-weight:600; margin-bottom:0.5rem; }
+  .cert-card p { color:var(--muted); font-size:0.85rem; margin-bottom:1rem; }
+
+  .cert-badge {
+    display:inline-flex; align-items:center; gap:0.4rem;
+    font-size:0.72rem;
+    padding:0.3rem 0.75rem;
+    border-radius:100px;
+    font-weight:600;
+    letter-spacing:0.04em;
+  }
+
+  .badge-achieved { background:rgba(16,185,129,0.15); color:var(--accent3); border:1px solid rgba(16,185,129,0.3); }
+  .badge-learning { background:rgba(0,212,255,0.1); color:var(--accent); border:1px solid rgba(0,212,255,0.25); }
+  .badge-dot { width:5px; height:5px; border-radius:50%; }
+  .badge-dot.green { background:var(--accent3); }
+  .badge-dot.blue { background:var(--accent); animation:blink 1.5s infinite; }
+
+  /* ── CONTACT ── */
+  #contact { position:relative; overflow:hidden; }
+
+  .contact-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start;
+  }
+
+  .contact-info { display:flex; flex-direction:column; gap:1.25rem; }
+
+  .contact-item {
+    display:flex; align-items:center; gap:1rem;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:1.25rem 1.5rem;
+    text-decoration:none;
+    color:var(--text);
+    transition:all 0.3s;
+  }
+
+  .contact-item:hover { border-color:rgba(0,212,255,0.35); transform:translateX(5px); }
+
+  .contact-icon {
+    width:44px; height:44px;
+    border-radius:10px;
+    background:rgba(0,212,255,0.1);
+    border:1px solid rgba(0,212,255,0.2);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.2rem;
+    flex-shrink:0;
+  }
+
+  .contact-detail { display:flex; flex-direction:column; }
+  .contact-label { font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; font-family:'JetBrains Mono',monospace; }
+  .contact-value { font-size:0.95rem; font-weight:500; margin-top:0.15rem; }
+
+  .contact-form { display:flex; flex-direction:column; gap:1rem; }
+
+  .form-group { display:flex; flex-direction:column; gap:0.5rem; }
+  .form-group label { font-size:0.8rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; font-family:'JetBrains Mono',monospace; }
+
+  .form-group input,
+  .form-group textarea {
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:0.875rem 1rem;
+    color:var(--text);
+    font-family:'Space Grotesk',sans-serif;
+    font-size:0.95rem;
+    transition:border-color 0.2s;
+    resize:none;
+    outline:none;
+    width:100%;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus { border-color:var(--accent); }
+
+  .form-group textarea { height:130px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background:var(--surface);
+    border-top:1px solid var(--border);
+    padding:2rem 5%;
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:1rem;
+  }
+
+  .footer-logo {
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.85rem;
+    color:var(--accent);
+  }
+
+  .footer-copy { font-size:0.8rem; color:var(--muted); }
+
+  /* ── REVEAL ON SCROLL ── */
+  .reveal {
+    opacity:0; transform:translateY(30px);
+    transition:opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 0.7s cubic-bezier(0.23,1,0.32,1);
+  }
+
+  .reveal.visible { opacity:1; transform:none; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    #hero { grid-template-columns:1fr; text-align:center; gap:3rem; }
+    .hero-desc { margin:0 auto 2.5rem; }
+    .hero-actions { justify-content:center; }
+    .hero-socials { justify-content:center; }
+    .hero-stats { justify-content:center; }
+    .about-grid { grid-template-columns:1fr; gap:3rem; }
+    .contact-grid { grid-template-columns:1fr; gap:3rem; }
+    .timeline-line { left:20px; }
+    .journey-item { grid-template-columns:1fr; padding-left:50px; }
+    .journey-item .journey-card { grid-column:1!important; grid-row:1!important; }
+    .journey-item .journey-spacer { display:none; }
+    .journey-dot { left:20px; }
+    .badge-tl, .badge-br { display:none; }
+  }
+
+  @media(max-width:640px){
+    nav { padding:0 5%; }
+    .nav-links { display:none; flex-direction:column; position:absolute; top:64px; left:0; right:0; background:var(--surface); border-bottom:1px solid var(--border); padding:1rem 5%; gap:1rem; }
+    .nav-links.open { display:flex; }
+    .hamburger { display:flex; }
+    section { padding:70px 5%; }
+    .projects-grid, .skills-grid, .cert-grid { grid-template-columns:1fr; }
+    .profile-ring { width:220px; }
+    footer { flex-direction:column; text-align:center; }
+  }
+</style>
 </head>
 <body>
 
-    <!-- Loading Preloader -->
-    <div id="preloader">
-        <div class="loader">
-            <div class="spinner"></div>
-            <p>Initializing Environment...</p>
-        </div>
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">&lt;Janitha.io /&gt;</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      System Status: Active &amp; Available
+    </div>
+    <h1 class="hero-name">Hi, I'm<br><span>Janitha</span></h1>
+    <p class="hero-role">I am a <span class="typed-text" id="typed"></span><span class="cursor">|</span></p>
+    <p class="hero-desc">Building robust, scalable pipelines and automating complex cloud infrastructure. Specializing in modern DevOps to accelerate delivery and optimize reliability.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">✉ Contact Me</a>
+      <a href="#projects" class="btn btn-outline">View Projects →</a>
+    </div>
+    <div class="hero-socials">
+      <a href="https://github.com/Janitha30" target="_blank" class="social-link" title="GitHub">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/janitha" target="_blank" class="social-link" title="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="mailto:jani2001mj@gmail.com" class="social-link" title="Email">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">8+</div><div class="stat-label">Tools</div></div>
+      <div class="stat"><div class="stat-num">AWS</div><div class="stat-label">Certified Path</div></div>
+      <div class="stat"><div class="stat-num">CI/CD</div><div class="stat-label">Pipelines</div></div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="profile-ring">
+      <img src="data:image/jpeg;base64,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" alt="Janitha" class="profile-img">
+      <div class="floating-badge badge-tl">
+        <span class="badge-icon">☁️</span> Cloud Architect
+      </div>
+      <div class="floating-badge badge-br">
+        <span class="badge-icon">⚙️</span> DevOps Engineer
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About Me</div>
+  <div class="about-grid">
+    <div>
+      <h2 class="section-title">Bridging Dev &amp;<br>Operations</h2>
+      <p class="section-desc">Passionate DevOps Engineer experienced in Linux, AWS, Docker, Kubernetes, Jenkins, Terraform, Ansible, and CI/CD automation. Focused on scalable cloud-native solutions and infrastructure-as-code principles.</p>
+      <div class="about-pills">
+        <span class="pill">Linux</span><span class="pill">AWS</span><span class="pill">Docker</span>
+        <span class="pill">Kubernetes</span><span class="pill">Jenkins</span><span class="pill">Terraform</span>
+        <span class="pill">Ansible</span><span class="pill">CI/CD</span><span class="pill">Python</span>
+        <span class="pill">Bash</span><span class="pill">Prometheus</span><span class="pill">Grafana</span>
+      </div>
+    </div>
+    <div>
+      <div class="about-card reveal">
+        <div class="about-card-icon">⚡</div>
+        <h3>Automation Philosophy</h3>
+        <p>If it has to be executed twice, automate it. Infrastructure should be declarative, modular, and fully version-controlled.</p>
+      </div>
+      <div class="about-card reveal" style="transition-delay:0.15s">
+        <div class="about-card-icon">🛡️</div>
+        <h3>Security &amp; Scale</h3>
+        <p>Integrating DevSecOps checks into pipelines early and architecting highly resilient, scalable container structures.</p>
+      </div>
+      <div class="about-card reveal" style="transition-delay:0.3s">
+        <div class="about-card-icon">📊</div>
+        <h3>Observability</h3>
+        <p>Instrumenting metrics and logging pipelines with Prometheus, Grafana, and system collectors for full-stack visibility.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey">
+  <div class="section-label">Roadmap</div>
+  <h2 class="section-title" style="text-align:center">DevOps Journey</h2>
+  <p class="section-desc" style="text-align:center;margin:0 auto 3.5rem">A structured progression through the modern DevOps toolchain—from OS fundamentals to full-stack cloud orchestration.</p>
+
+  <div class="journey-timeline">
+    <div class="timeline-line"><div class="timeline-line-fill" id="timelineFill" style="height:0%"></div></div>
+
+    <div class="journey-item">
+      <div class="journey-card"><div class="journey-num">01</div><div class="journey-tech">Foundational OS</div><h3>Linux</h3><p>Mastered kernel systems, bash scripting, file permissions, users, and server administration.</p></div>
+      <div class="journey-spacer"></div>
+      <div class="journey-dot"></div>
     </div>
 
-    <!-- Background Canvas Particles -->
-    <canvas id="particles-canvas"></canvas>
+    <div class="journey-item">
+      <div class="journey-spacer"></div>
+      <div class="journey-card"><div class="journey-num">02</div><div class="journey-tech">Version Control</div><h3>Git &amp; GitHub</h3><p>Workflow orchestration, merge conflict resolution, branch protection rules, and PR flows.</p></div>
+      <div class="journey-dot"></div>
+    </div>
 
-    <!-- Header & Navigation -->
-    <header class="header">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <span class="logo-accent">&lt;</span>Janitha<span class="logo-accent">.io /&gt;</span>
-            </a>
-            
-            <nav class="nav-links" id="nav-links">
-                <a href="#about" class="nav-link active">About</a>
-                <a href="#journey" class="nav-link">Journey</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#certifications" class="nav-link">Certifications</a>
-                <a href="#contact" class="nav-link nav-cta">Contact Me</a>
-            </nav>
+    <div class="journey-item">
+      <div class="journey-card"><div class="journey-num">03</div><div class="journey-tech">Containerization</div><h3>Docker</h3><p>Built isolated environments, multi-stage optimized Dockerfiles, and container networking.</p></div>
+      <div class="journey-spacer"></div>
+      <div class="journey-dot"></div>
+    </div>
 
-            <button class="mobile-toggle" aria-label="Toggle navigation menu" id="mobile-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
+    <div class="journey-item">
+      <div class="journey-spacer"></div>
+      <div class="journey-card"><div class="journey-num">04</div><div class="journey-tech">Continuous Integration</div><h3>Jenkins</h3><p>Declarative pipelines-as-code, static analysis integration, and automated deployment workflows.</p></div>
+      <div class="journey-dot"></div>
+    </div>
+
+    <div class="journey-item">
+      <div class="journey-card"><div class="journey-num">05</div><div class="journey-tech">Cloud Computing</div><h3>AWS</h3><p>Provisioning global services: IAM policies, secure VPC subnets, dynamic EC2, and S3 resources.</p></div>
+      <div class="journey-spacer"></div>
+      <div class="journey-dot"></div>
+    </div>
+
+    <div class="journey-item">
+      <div class="journey-spacer"></div>
+      <div class="journey-card"><div class="journey-num">06</div><div class="journey-tech">Infrastructure as Code</div><h3>Terraform</h3><p>Repeatable infrastructure with environment variables, modules, and workspace management.</p></div>
+      <div class="journey-dot"></div>
+    </div>
+
+    <div class="journey-item">
+      <div class="journey-card"><div class="journey-num">07</div><div class="journey-tech">Orchestration</div><h3>Kubernetes</h3><p>Multi-tier clustering, custom service definitions, ingress controllers, storage, and configs.</p></div>
+      <div class="journey-spacer"></div>
+      <div class="journey-dot"></div>
+    </div>
+
+    <div class="journey-item">
+      <div class="journey-spacer"></div>
+      <div class="journey-card"><div class="journey-num">08</div><div class="journey-tech">Telemetry</div><h3>Monitoring</h3><p>Metrics logging pipelines with system collectors, scraper engines, and visual dashboards.</p></div>
+      <div class="journey-dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Technical Competency</div>
+  <h2 class="section-title">Skills &amp; Toolchain</h2>
+  <p class="section-desc">Full-stack DevOps competencies across cloud platforms, container orchestration, CI/CD, and infrastructure automation.</p>
+
+  <div class="skills-grid">
+    <div class="skill-group reveal">
+      <div class="skill-group-title">Cloud Environments</div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">AWS</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Azure</span><span class="skill-pct">65%</span></div><div class="skill-bar"><div class="skill-fill" data-width="65"></div></div></div>
+    </div>
+    <div class="skill-group reveal" style="transition-delay:0.1s">
+      <div class="skill-group-title">Containers &amp; Orchestration</div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Docker</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Kubernetes</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
+    </div>
+    <div class="skill-group reveal" style="transition-delay:0.2s">
+      <div class="skill-group-title">Continuous Integration</div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Jenkins</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">GitHub Actions</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+    </div>
+    <div class="skill-group reveal" style="transition-delay:0.3s">
+      <div class="skill-group-title">Infrastructure as Code</div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Terraform</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Ansible</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
+    </div>
+    <div class="skill-group reveal" style="transition-delay:0.4s">
+      <div class="skill-group-title">Monitoring &amp; Telemetry</div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Prometheus</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Grafana</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+    </div>
+    <div class="skill-group reveal" style="transition-delay:0.5s">
+      <div class="skill-group-title">Development &amp; Systems</div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Python</span><span class="skill-pct">70%</span></div><div class="skill-bar"><div class="skill-fill" data-width="70"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Bash Scripting</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Linux Admin</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Real-world Works</div>
+  <h2 class="section-title">Featured Projects</h2>
+  <p class="section-desc">End-to-end DevOps pipelines, cloud infrastructure, and automation solutions built to production standards.</p>
+
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-icon">🚀</div>
+      <h3>CI/CD Pipeline Automation</h3>
+      <p>Built a fully automated Jenkins pipeline integrating static analysis, Docker image builds, and Kubernetes deployments with rollback support.</p>
+      <div class="project-tags"><span class="project-tag">Jenkins</span><span class="project-tag">Docker</span><span class="project-tag">K8s</span><span class="project-tag">Groovy</span></div>
+      <a href="https://github.com/Janitha30" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal" style="transition-delay:0.1s">
+      <div class="project-icon">☁️</div>
+      <h3>AWS Cloud Infrastructure</h3>
+      <p>Provisioned a multi-tier, highly available AWS architecture with IAM roles, secure VPC subnets, EC2 auto-scaling, and S3 lifecycle policies.</p>
+      <div class="project-tags"><span class="project-tag">AWS</span><span class="project-tag">VPC</span><span class="project-tag">EC2</span><span class="project-tag">IAM</span></div>
+      <a href="https://github.com/Janitha30" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal" style="transition-delay:0.2s">
+      <div class="project-icon">🏗️</div>
+      <h3>Terraform IaC Modules</h3>
+      <p>Designed reusable Terraform modules for repeatable infrastructure across multiple environments with workspace isolation and state management.</p>
+      <div class="project-tags"><span class="project-tag">Terraform</span><span class="project-tag">AWS</span><span class="project-tag">HCL</span><span class="project-tag">Modules</span></div>
+      <a href="https://github.com/Janitha30" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal" style="transition-delay:0.3s">
+      <div class="project-icon">📊</div>
+      <h3>Monitoring Stack</h3>
+      <p>Deployed a full observability stack with Prometheus scraping, Grafana dashboards, and alerting rules for application and infrastructure metrics.</p>
+      <div class="project-tags"><span class="project-tag">Prometheus</span><span class="project-tag">Grafana</span><span class="project-tag">Alertmanager</span></div>
+      <a href="https://github.com/Janitha30" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal" style="transition-delay:0.4s">
+      <div class="project-icon">⚙️</div>
+      <h3>Ansible Configuration Mgmt</h3>
+      <p>Automated server provisioning and configuration management across fleets with idempotent Ansible playbooks and dynamic inventory.</p>
+      <div class="project-tags"><span class="project-tag">Ansible</span><span class="project-tag">Linux</span><span class="project-tag">YAML</span></div>
+      <a href="https://github.com/Janitha30" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal" style="transition-delay:0.5s">
+      <div class="project-icon">🔒</div>
+      <h3>DevSecOps Pipeline</h3>
+      <p>Integrated SAST, DAST, and container scanning tools into existing CI pipelines, shifting security checks left without disrupting delivery velocity.</p>
+      <div class="project-tags"><span class="project-tag">DevSecOps</span><span class="project-tag">Trivy</span><span class="project-tag">SonarQube</span></div>
+      <a href="https://github.com/Janitha30" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certifications">
+  <div class="section-label">Credentials</div>
+  <h2 class="section-title">Certifications &amp; Awards</h2>
+  <p class="section-desc">Recognized excellence and actively pursuing industry-leading qualifications.</p>
+
+  <div class="cert-grid">
+    <div class="cert-card achieved reveal">
+      <div class="cert-icon">🏆</div>
+      <h3>Excellence Award</h3>
+      <p>UnifyCX — Awarded for outstanding performance, dedication, and team-wide optimization of automation workflows.</p>
+      <span class="cert-badge badge-achieved"><span class="badge-dot green"></span>Achieved</span>
+    </div>
+    <div class="cert-card reveal" style="transition-delay:0.1s">
+      <div class="cert-icon">☁️</div>
+      <h3>AWS Cloud Practitioner</h3>
+      <p>Foundational certification covering core AWS services, security, and cloud architecture principles.</p>
+      <span class="cert-badge badge-learning"><span class="badge-dot blue"></span>In Progress</span>
+    </div>
+    <div class="cert-card reveal" style="transition-delay:0.2s">
+      <div class="cert-icon">🏗️</div>
+      <h3>Terraform Associate</h3>
+      <p>HashiCorp certification validating Infrastructure-as-Code skills with Terraform.</p>
+      <span class="cert-badge badge-learning"><span class="badge-dot blue"></span>In Progress</span>
+    </div>
+    <div class="cert-card reveal" style="transition-delay:0.3s">
+      <div class="cert-icon">☸️</div>
+      <h3>Kubernetes Administrator (CKA)</h3>
+      <p>Certified Kubernetes Administrator exam covering cluster management, networking, and storage.</p>
+      <span class="cert-badge badge-learning"><span class="badge-dot blue"></span>In Progress</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2 class="section-title">Contact Infrastructure</h2>
+  <p class="section-desc">Open to discussing DevOps roles, infrastructure redesigns, or pipeline optimization challenges.</p>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <a href="mailto:jani2001mj@gmail.com" class="contact-item reveal">
+        <div class="contact-icon">📬</div>
+        <div class="contact-detail">
+          <span class="contact-label">Mail Delivery Endpoint</span>
+          <span class="contact-value">jani2001mj@gmail.com</span>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero-section" id="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <span class="hero-badge">System Status: Active</span>
-                <h1 class="hero-title">Hi, I'm <span class="highlight">Janitha</span></h1>
-                <h2 class="hero-subtitle">
-                    I am a <span id="typing-text"></span><span class="cursor">|</span>
-                </h2>
-                <p class="hero-description">
-                    Building robust, scalable pipelines and automating complex cloud infrastructure. Specializing in modern DevOps methodologies to accelerate software delivery and optimize system reliability.
-                </p>
-                <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary">Contact Me</a>
-                    <a href="#projects" class="btn btn-secondary">View Projects</a>
-                    <a href="mailto:jani2001mj@gmail.com?subject=Resume Request - DevOps Engineer" class="btn btn-outline">
-                        <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download Resume
-                    </a>
-                </div>
-                
-                <!-- Enhanced Social Bar -->
-                <div class="hero-social-bar">
-                    <span class="social-label">Connect Endpoint:</span>
-                    <div class="social-icons">
-                        <a href="https://github.com/Janitha30" target="_blank" rel="noopener" aria-label="GitHub">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-                        </a>
-                        <a href="https://linkedin.com/in/janitha" target="_blank" rel="noopener" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-                        </a>
-                        <a href="mailto:jani2001mj@gmail.com" aria-label="Email">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="hero-image-container">
-                <div class="profile-card-glow"></div>
-                <div class="profile-card">
-                    <div class="profile-image-wrapper">
-                        <!-- Upgraded dynamic container prevents structural collapse -->
-                        <img src="profile.jpg" alt="Janitha" class="profile-image" loading="eager" onerror="this.style.display='none'; this.parentElement.classList.add('image-missing');">
-                    </div>
-                    <div class="profile-console">
-                        <div class="console-header">
-                            <span class="console-dot red"></span>
-                            <span class="console-dot yellow"></span>
-                            <span class="console-dot green"></span>
-                        </div>
-                        <p class="console-text">$ node sys_check.js</p>
-                        <p class="console-response">Status: Optimal</p>
-                    </div>
-                </div>
-            </div>
+      </a>
+      <a href="tel:+918277199154" class="contact-item reveal" style="transition-delay:0.1s">
+        <div class="contact-icon">📞</div>
+        <div class="contact-detail">
+          <span class="contact-label">Phone Direct Connect</span>
+          <span class="contact-value">+91 8277 199 154</span>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section scroll-reveal" id="about">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-subtitle">Profile Overview</span>
-                <h2 class="section-title">About Me</h2>
-                <div class="underline"></div>
-            </div>
-            
-            <div class="about-grid">
-                <div class="about-text-content">
-                    <p class="about-lead">
-                        Passionate DevOps Engineer with experience in Linux, AWS, Docker, Kubernetes, Jenkins, Terraform, Ansible, CI/CD, and Infrastructure Automation.
-                    </p>
-                    <p class="about-body">
-                        Focused on building scalable cloud-native solutions, automating deployments, and improving software delivery pipelines. I aim to bridge the gap between development and operations through consistent monitoring, high-efficiency configuration management, and robust infrastructure-as-code principles.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat-box">
-                            <span class="stat-number">AWS</span>
-                            <span class="stat-label">Cloud Deployment Focus</span>
-                        </div>
-                        <div class="stat-box">
-                            <span class="stat-number">IaC</span>
-                            <span class="stat-label">Declarative Management</span>
-                        </div>
-                        <div class="stat-box">
-                            <span class="stat-number">CI/CD</span>
-                            <span class="stat-label">Automated Delivery</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="about-highlights">
-                    <div class="highlight-card">
-                        <div class="highlight-icon">⚡</div>
-                        <h3>Philosophy</h3>
-                        <p>If it has to be executed twice, automate it. Infrastructure should be declarative, modular, and fully version-controlled.</p>
-                    </div>
-                    <div class="highlight-card">
-                        <div class="highlight-icon">🛡️</div>
-                        <h3>Security & Scale</h3>
-                        <p>Integrating security checks into pipelines early (DevSecOps) and architecting highly resilient container structures.</p>
-                    </div>
-                </div>
-            </div>
+      </a>
+      <a href="https://github.com/Janitha30" target="_blank" class="contact-item reveal" style="transition-delay:0.2s">
+        <div class="contact-icon">💻</div>
+        <div class="contact-detail">
+          <span class="contact-label">Source Control Hub</span>
+          <span class="contact-value">github.com/Janitha30</span>
         </div>
-    </section>
-
-    <!-- DevOps Journey Section -->
-    <section class="journey-section scroll-reveal" id="journey">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-subtitle">Roadmap</span>
-                <h2 class="section-title">DevOps Journey</h2>
-                <div class="underline"></div>
-            </div>
-            
-            <div class="timeline">
-                <div class="timeline-bar"></div>
-                
-                <!-- Journey Item 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">1</div>
-                    <div class="timeline-card">
-                        <span class="timeline-tech">Foundational OS</span>
-                        <h3>Linux</h3>
-                        <p>Mastered kernel core systems, bash scripting, file permissions, users, and server setup.</p>
-                    </div>
-                </div>
-
-                <!-- Journey Item 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">2</div>
-                    <div class="timeline-card">
-                        <span class="timeline-tech">Version Control</span>
-                        <h3>Git & GitHub</h3>
-                        <p>Learned workflow orchestration, merge conflict resolution, branch protection rules, and PR flows.</p>
-                    </div>
-                </div>
-
-                <!-- Journey Item 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">3</div>
-                    <div class="timeline-card">
-                        <span class="timeline-tech">Containerization</span>
-                        <h3>Docker</h3>
-                        <p>Built isolated environments, writing multi-stage optimized Dockerfiles, and managing networks.</p>
-                    </div>
-                </div>
-
-                <!-- Journey Item 4 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">4</div>
-                    <div class="timeline-card">
-                        <span class="timeline-tech">Continuous Integration</span>
-                        <h3>Jenkins</h3>
-                        <p>Configured declarative pipelines-as-code, integrated static analysis, and automated deployments.</p>
-                    </div>
-                </div>
-
-                <!-- Journey Item 5 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">5</div>
-                    <div class="timeline-card">
-                        <span class="timeline-tech">Cloud Computing</span>
-                        <h3>AWS</h3>
-                        <p>Provisioning global services: IAM policies, secure VPC subnets, dynamic EC2 provisioning, and S3 resources.</p>
-                    </div>
-                </div>
-
-                <!-- Journey Item 6 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">6</div>
-                    <div class="timeline-card">
-                        <span class="timeline-tech">Infrastructure as Code</span>
-                        <h3>Terraform</h3>
-                        <p>Constructed repeatable structural infrastructure utilizing robust environment variables and workspaces.</p>
-                    </div>
-                </div>
-
-                <!-- Journey Item 7 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">7</div>
-                    <div class="timeline-card">
-                        <span class="timeline-tech">Orchestration</span>
-                        <h3>Kubernetes</h3>
-                        <p>Configured multi-tier clustering, custom service definitions, ingress, storage, and configurations.</p>
-                    </div>
-                </div>
-
-                <!-- Journey Item 8 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">8</div>
-                    <div class="timeline-card">
-                        <span class="timeline-tech">Telemetry</span>
-                        <h3>Monitoring</h3>
-                        <p>Instrumenting metrics logging pipelines utilizing system collectors, scraper engines, and visual consoles.</p>
-                    </div>
-                </div>
-            </div>
+      </a>
+      <a href="https://linkedin.com/in/janitha" target="_blank" class="contact-item reveal" style="transition-delay:0.3s">
+        <div class="contact-icon">🔗</div>
+        <div class="contact-detail">
+          <span class="contact-label">Professional Network</span>
+          <span class="contact-value">linkedin.com/in/janitha</span>
         </div>
-    </section>
+      </a>
+    </div>
 
-    <!-- Skills Section -->
-    <section class="skills-section scroll-reveal" id="skills">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-subtitle">Technical Competency</span>
-                <h2 class="section-title">Skills & Toolchain</h2>
-                <div class="underline"></div>
-            </div>
+    <div class="contact-form reveal">
+      <div class="form-group">
+        <label>Sender Identity</label>
+        <input type="text" placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label>Callback Address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>Payload Message</label>
+        <textarea placeholder="Tell me about your project or role..."></textarea>
+      </div>
+      <button class="btn btn-primary" onclick="handleSubmit(event)">⚡ Dispatch Payload</button>
+    </div>
+  </div>
+</section>
 
-            <div class="skills-grid">
-                <!-- Cloud -->
-                <div class="skill-group-card">
-                    <div class="skill-header">
-                        <h3>Cloud Environments</h3>
-                    </div>
-                    <ul class="skill-list">
-                        <li>
-                            <div class="skill-name-percentage"><span>AWS</span><span class="pct">90%</span></div>
-                            <div class="progress-track"><div class="progress-fill" style="--width: 90%"></div></div>
-                        </li>
-                        <li>
-                            <div class="skill-name-percentage"><span>Azure</span><span class="pct">65%</span></div>
-                            <div class="progress-track"><div class="progress-fill" style="--width: 65%"></div></div>
-                        </li>
-                    </ul>
-                </div>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">&lt;Janitha.io /&gt;</div>
+  <div class="footer-copy">© 2026 Janitha · DevOps & Cloud Engineer</div>
+  <div style="display:flex;gap:1rem">
+    <a href="https://github.com/Janitha30" target="_blank" style="color:var(--muted);font-size:0.8rem;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">GitHub</a>
+    <a href="https://linkedin.com/in/janitha" target="_blank" style="color:var(--muted);font-size:0.8rem;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a>
+  </div>
+</footer>
 
-                <!-- Containers -->
-                <div class="skill-group-card">
-                    <div class="skill-header">
-                        <h3>Containers & Orchestration</h3>
-                    </div>
-                    <ul class="skill-list">
-                        <li>
-                            <div class="skill-name-percentage"><span>Docker</span><span class="pct">85%</span></div>
-                            <div class="progress-track"><div class="progress-fill" style="--width: 85%"></div></div>
-                        </li>
-                        <li>
-                            <div class="skill-name-percentage"><span>Kubernetes</span><span class="pct">75%</span></div>
-                            <div class="progress-track"><div class="progress-fill" style="--width: 75%"></div></div>
-                        </li>
-                    </ul>
-                </div>
+<script>
+// ── TYPED TEXT ──
+const phrases = ['DevOps Engineer', 'Cloud Architect', 'Automation Specialist', 'CI/CD Engineer'];
+let pIdx = 0, cIdx = 0, deleting = false;
+const el = document.getElementById('typed');
 
-                <!-- CI/CD -->
-                <div class="skill-group-card">
-                    <div class="skill-header">
-                        <h3>Continuous Integration</h3>
-                    </div>
-                    <ul class="skill-list">
-                        <li>
-                            <div class="skill-name-percentage"><span>Jenkins</span><span class="pct">80%</span></div>
-                            <div class="progress-track"><div class="progress-fill" style="--width: 80%"></div></div>
-                        </li>
-                        <li>
-                            <div class="skill-name-percentage"><span>GitHub Actions</span><span class="pct">85%</span></div>
-                            <div class="progress-track"><div class="progress-fill" style="--width: 85%"></div></div>
-                        </li>
-                    </ul>
-                </div>
+function type() {
+  const phrase = phrases[pIdx];
+  if (!deleting) {
+    el.textContent = phrase.slice(0, ++cIdx);
+    if (cIdx === phrase.length) { deleting = true; setTimeout(type, 2000); return; }
+  } else {
+    el.textContent = phrase.slice(0, --cIdx);
+    if (cIdx === 0) { deleting = false; pIdx = (pIdx+1) % phrases.length; }
+  }
+  setTimeout(type, deleting ? 60 : 100);
+}
+type();
 
-                <!-- IaC -->
-                <div class="skill-group-card">
-                    <div class="skill-header">
-                        <h3>Infrastructure as Code</h3>
-                    </div>
-                    <ul class="skill-list">
-                        <li>
-                            <div class="skill-name-percentage"><span>Terraform</span><span class="pct">80%</span></div>
-                            <div class="progress-track"><div class="progress-fill" style="--width: 80%"></div></div>
-                        </li>
-                        <li>
-                            <div class="skill-name-percentage"><span>Ansible</span><span class="pct">75%</span></div>
-                            <div class="progress-track"><div class="progress-fill" style="--width: 75%"></div></div>
-                        </li>
-                    </ul>
-                </div>
+// ── NAV MOBILE ──
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
 
-                <!-- Monitoring -->
-                <div class="skill-group-card">
-                    <div class="skill-header">
-                        <h3>Monitoring & Telemetry</h3>
-                    </div>
-                    <ul class="skill-list">
-                        <li>
-                            <div class="skill-name-percentage"><span>Prometheus</span><span class="pct">75%</span></div>
-                            <div class="progress-track"><div class="progress-fill" style="--width: 75%"></div></div>
-                        </li>
-                        <li>
-                            <div class="skill-name-percentage"><span>Grafana</span><span class="pct">80%</span></div>
-                            <div class="progress-track"><div class="progress-fill" style="--width: 80%"></div></div>
-                        </li>
-                    </ul>
-                </div>
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // Animate skill bars
+      e.target.querySelectorAll('.skill-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
 
-                <!-- Programming -->
-                <div class="skill-group-card">
-                    <div class="skill-header">
-                        <h3>Development & Systems</h3>
-                    </div>
-                    <ul class="skill-list">
-                        <li>
-                            <div class="skill-name-percentage"><span>Python</span><span class="pct">70%</span></div>
-                            <div class="progress-track"><div class="progress-fill" style="--width: 70%"></div></div>
-                        </li>
-                        <li>
-                            <div class="skill-name-percentage"><span>Bash Scripting</span><span class="pct">85%</span></div>
-                            <div class="progress-track"><div class="progress-fill" style="--width: 85%"></div></div>
-                        </li>
-                    </ul>
-                </div>
+document.querySelectorAll('.reveal, .journey-card').forEach(el => observer.observe(el));
 
-                <!-- Version Control -->
-                <div class="skill-group-card">
-                    <div class="skill-header">
-                        <h3>Collaboration</h3>
-                    </div>
-                    <ul class="skill-list">
-                        <li>
-                            <div class="skill-name-percentage"><span>Git</span><span class="pct">90%</span></div>
-                            <div class="progress-track"><div class="progress-fill" style="--width: 90%"></div></div>
-                        </li>
-                        <li>
-                            <div class="skill-name-percentage"><span>GitHub</span><span class="pct">85%</span></div>
-                            <div class="progress-track"><div class="progress-fill" style="--width: 85%"></div></div>
-                        </li>
-                    </ul>
-                </div>
+// Trigger skill bars in visible groups on load
+document.querySelectorAll('.skill-group').forEach(group => {
+  const rect = group.getBoundingClientRect();
+  if (rect.top < window.innerHeight) {
+    group.querySelectorAll('.skill-fill').forEach(bar => {
+      setTimeout(() => bar.style.width = bar.dataset.width + '%', 400);
+    });
+  }
+});
 
-                <!-- OS -->
-                <div class="skill-group-card">
-                    <div class="skill-header">
-                        <h3>Operating Systems</h3>
-                    </div>
-                    <ul class="skill-list">
-                        <li>
-                            <div class="skill-name-percentage"><span>Linux Administration</span><span class="pct">85%</span></div>
-                            <div class="progress-track"><div class="progress-fill" style="--width: 85%"></div></div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+// ── TIMELINE FILL ──
+function updateTimeline() {
+  const timeline = document.querySelector('.journey-timeline');
+  if (!timeline) return;
+  const rect = timeline.getBoundingClientRect();
+  const windowH = window.innerHeight;
+  const visible = Math.max(0, Math.min(windowH - rect.top, rect.height));
+  const pct = Math.min(100, (visible / rect.height) * 100);
+  const fill = document.getElementById('timelineFill');
+  if (fill) fill.style.height = pct + '%';
+}
 
-    <!-- Projects Section -->
-    <section class="projects-section scroll-reveal" id="projects">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-subtitle">Real-world Works</span>
-                <h2 class="section-title">Featured Projects</h2>
-                <div class="underline"></div>
-            </div>
+window.addEventListener('scroll', updateTimeline, { passive: true });
+updateTimeline();
 
-            <!-- Dynanic GitHub Repo Loader Container -->
-            <div id="github-projects-grid" class="projects-grid">
-                <div class="loading-placeholder">
-                    <div class="inner-loader"></div>
-                    <p>Contacting GitHub API...</p>
-                </div>
-            </div>
-        </div>
-    </section>
+// ── FORM SUBMIT ──
+function handleSubmit(e) {
+  const btn = e.target;
+  btn.textContent = '✓ Message Dispatched';
+  btn.style.background = 'linear-gradient(135deg,#10b981,#059669)';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = '⚡ Dispatch Payload';
+    btn.style.background = '';
+    btn.disabled = false;
+  }, 3000);
+}
 
-    <!-- Certifications Section -->
-    <section class="certifications-section scroll-reveal" id="certifications">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-subtitle">Credentials</span>
-                <h2 class="section-title">Certifications & Awards</h2>
-                <div class="underline"></div>
-            </div>
-
-            <div class="certs-layout">
-                <!-- Excellence Award (Prominent Card) -->
-                <div class="award-card-wrapper">
-                    <div class="award-card">
-                        <div class="award-badge-ribbon">Excellence</div>
-                        <div class="award-icon-box">🏆</div>
-                        <div class="award-body">
-                            <span class="award-issuer">UnifyCX</span>
-                            <h3>Excellence Award</h3>
-                            <span class="award-status achieved">Status: Achieved</span>
-                            <p class="award-description">
-                                Awarded for outstanding performance, dedication, and contribution towards team-wide optimization, automation workflows, and persistent delivery.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Certifications In-Progress Grid -->
-                <div class="learning-grid">
-                    <div class="learning-header">
-                        <h3>Development & Certification Paths</h3>
-                        <p>Currently actively learning and pursuing key industry qualifications.</p>
-                    </div>
-                    
-                    <div class="learning-paths-list">
-                        <!-- Path 1 -->
-                        <div class="learning-card">
-                            <div class="learning-icon">
-                                <svg viewBox="0 0 24 24" width="24" height="24" fill="#0ea5e9"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95A5.47 5.47 0 0 1 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z"/></svg>
-                            </div>
-                            <div class="learning-details">
-                                <h4>AWS Cloud Practitioner</h4>
-                                <span class="status-badge learning">Learning</span>
-                            </div>
-                        </div>
-
-                        <!-- Path 2 -->
-                        <div class="learning-card">
-                            <div class="learning-icon">
-                                <svg viewBox="0 0 24 24" width="24" height="24" fill="#8b5cf6"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                            </div>
-                            <div class="learning-details">
-                                <h4>Terraform Associate</h4>
-                                <span class="status-badge learning">Learning</span>
-                            </div>
-                        </div>
-
-                        <!-- Path 3 -->
-                        <div class="learning-card">
-                            <div class="learning-icon">
-                                <svg viewBox="0 0 24 24" width="24" height="24" fill="#10b981"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v4h2v-4h-2zm0-4v2h2V7h-2z"/></svg>
-                            </div>
-                            <div class="learning-details">
-                                <h4>Kubernetes Administrator (CKA)</h4>
-                                <span class="status-badge learning">Learning</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section scroll-reveal" id="contact">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-subtitle">Get In Touch</span>
-                <h2 class="section-title">Contact Infrastructure</h2>
-                <div class="underline"></div>
-            </div>
-
-            <div class="contact-grid">
-                <!-- Info cards left side -->
-                <div class="contact-info">
-                    <h3>Let's collaborate on your next pipeline automation</h3>
-                    <p>I am generally open to discussing DevOps roles, infrastructure redesigns, or pipeline optimization problems.</p>
-                    
-                    <div class="contact-details-list">
-                        <!-- Item: Email -->
-                        <div class="contact-item-card">
-                            <div class="item-icon">📬</div>
-                            <div class="item-text">
-                                <span class="item-label">Mail Delivery Endpoint</span>
-                                <a href="mailto:jani2001mj@gmail.com" class="item-link">jani2001mj@gmail.com</a>
-                            </div>
-                        </div>
-
-                        <!-- Item: Phone -->
-                        <div class="contact-item-card">
-                            <div class="item-icon">📞</div>
-                            <div class="item-text">
-                                <span class="item-label">Phone Direct Connect</span>
-                                <a href="tel:+918277199154" class="item-link">+91 8277199154</a>
-                            </div>
-                        </div>
-
-                        <!-- Item: Git -->
-                        <div class="contact-item-card">
-                            <div class="item-icon">💻</div>
-                            <div class="item-text">
-                                <span class="item-label">Source Control Hub</span>
-                                <a href="https://github.com/Janitha30" target="_blank" rel="noopener" class="item-link">github.com/Janitha30</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Interactive mockup Form -->
-                <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); handleFormSubmit();">
-                        <div class="form-group">
-                            <label for="form-name">Sender Identity (Name)</label>
-                            <input type="text" id="form-name" required placeholder="eg. John Doe">
-                        </div>
-                        <div class="form-group">
-                            <label for="form-email">Callback Address (Email)</label>
-                            <input type="email" id="form-email" required placeholder="eg. john@company.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="form-msg">Payload Message</label>
-                            <textarea id="form-msg" rows="5" required placeholder="Provide infrastructure requirements or project details..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">
-                            Dispatch Payload Message
-                        </button>
-                        <div class="form-response-msg" id="form-response"></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <p class="copyright">&copy; 2026 Janitha | DevOps Engineer</p>
-            <div class="footer-links">
-                <a href="https://github.com/Janitha30" target="_blank" rel="noopener" aria-label="GitHub">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-                </a>
-                <a href="mailto:jani2001mj@gmail.com" aria-label="Email">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Script Entrypoint -->
-    <script src="script.js" defer></script>
+// ── NAV HIGHLIGHT ──
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 80) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#'+current ? 'var(--accent)' : '';
+  });
+}, { passive: true });
+</script>
 </body>
 </html>
