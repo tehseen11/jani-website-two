@@ -1,82 +1,101 @@
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // ==========================================
-    // 1. PRELOADER CONTROLLER
-    // ==========================================
+// ==========================================
+// 1. SAFEGUARDED PRELOADER (Executes Immediately)
+// ==========================================
+(function() {
     const preloader = document.getElementById("preloader");
-    window.addEventListener("load", () => {
-        setTimeout(() => {
+    
+    function hidePreloader() {
+        if (preloader) {
             preloader.style.opacity = "0";
+            preloader.style.pointerEvents = "none";
             setTimeout(() => {
                 preloader.style.display = "none";
             }, 500);
-        }, 800); // Artificial minimum load wait for smoother experience
-    });
+        }
+    }
+
+    // Trigger immediately if the page has already finished loading (handles caching)
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        hidePreloader();
+    } else {
+        window.addEventListener("load", hidePreloader);
+    }
+
+    // Bulletproof Safety Fallback: Forces preloader clear after 3 seconds 
+    // to guarantee the screen never gets stuck under any circumstance.
+    setTimeout(hidePreloader, 3000);
+})();
+
+// ==========================================
+// DOM DEPENDENT COMPONENTS (Executes after parsing)
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
 
     // ==========================================
     // 2. HIGH PERFORMANCE CANVAS PARTICLES
     // ==========================================
     const canvas = document.getElementById("particles-canvas");
-    const ctx = canvas.getContext("2d");
-    
-    let particlesArray = [];
-    const numberOfParticles = 45;
-    
-    // Resize monitoring
-    function setCanvasSize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    setCanvasSize();
-    window.addEventListener("resize", setCanvasSize);
-    
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 1.5 + 0.5;
-            this.speedX = Math.random() * 0.4 - 0.2;
-            this.speedY = Math.random() * 0.4 - 0.2;
-            this.color = Math.random() > 0.5 ? "rgba(14, 165, 233, 0.15)" : "rgba(139, 92, 246, 0.15)";
-        }
-        
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
+    if (canvas) {
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+            let particlesArray = [];
+            const numberOfParticles = 45;
             
-            // Loop edges
-            if (this.x > canvas.width) this.x = 0;
-            else if (this.x < 0) this.x = canvas.width;
+            function setCanvasSize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            setCanvasSize();
+            window.addEventListener("resize", setCanvasSize);
             
-            if (this.y > canvas.height) this.y = 0;
-            else if (this.y < 0) this.y = canvas.height;
-        }
-        
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = this.color;
-            ctx.fill();
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 1.5 + 0.5;
+                    this.speedX = Math.random() * 0.4 - 0.2;
+                    this.speedY = Math.random() * 0.4 - 0.2;
+                    this.color = Math.random() > 0.5 ? "rgba(14, 165, 233, 0.15)" : "rgba(139, 92, 246, 0.15)";
+                }
+                
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    
+                    if (this.x > canvas.width) this.x = 0;
+                    else if (this.x < 0) this.x = canvas.width;
+                    
+                    if (this.y > canvas.height) this.y = 0;
+                    else if (this.y < 0) this.y = canvas.height;
+                }
+                
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+            }
+            
+            function initParticles() {
+                particlesArray = [];
+                for (let i = 0; i < numberOfParticles; i++) {
+                    particlesArray.push(new Particle());
+                }
+            }
+            initParticles();
+            
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                    particlesArray[i].draw();
+                }
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
         }
     }
-    
-    function initParticles() {
-        particlesArray = [];
-        for (let i = 0; i < numberOfParticles; i++) {
-            particlesArray.push(new Particle());
-        }
-    }
-    initParticles();
-    
-    function animateParticles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < particlesArray.length; i++) {
-            particlesArray[i].update();
-            particlesArray[i].draw();
-        }
-        requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
 
     // ==========================================
     // 3. DYNAMIC TYPING ENGINE
@@ -95,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let typingSpeed = 100;
     
     function typeEffect() {
+        if (!typingText) return;
         const currentRole = roles[roleIndex];
         
         if (isDeleting) {
@@ -109,11 +129,11 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (!isDeleting && charIndex === currentRole.length) {
             isDeleting = true;
-            typingSpeed = 2000; // Delay before deletion begins
+            typingSpeed = 2000;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             roleIndex = (roleIndex + 1) % roles.length;
-            typingSpeed = 400; // Small delay before typing next
+            typingSpeed = 400;
         }
         
         setTimeout(typeEffect, typingSpeed);
@@ -130,17 +150,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const navLinksContainer = document.getElementById("nav-links");
     const navLinks = document.querySelectorAll(".nav-link");
     
-    mobileToggle.addEventListener("click", () => {
-        mobileToggle.classList.toggle("active");
-        navLinksContainer.classList.toggle("active");
-    });
-    
-    navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            mobileToggle.classList.remove("active");
-            navLinksContainer.classList.remove("active");
+    if (mobileToggle && navLinksContainer) {
+        mobileToggle.addEventListener("click", () => {
+            mobileToggle.classList.toggle("active");
+            navLinksContainer.classList.toggle("active");
         });
-    });
+        
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                mobileToggle.classList.remove("active");
+                navLinksContainer.classList.remove("active");
+            });
+        });
+    }
 
     // ==========================================
     // 5. STICKY NAV & ACTIVE SECTION TRACKING (SCROLLSPY)
@@ -149,16 +171,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll("section");
     
     window.addEventListener("scroll", () => {
-        // Sticky Header effect
-        if (window.scrollY > 50) {
-            header.style.padding = "0.75rem 0";
-            header.style.boxShadow = "0 10px 30px rgba(0,0,0,0.5)";
-        } else {
-            header.style.padding = "1.25rem 0";
-            header.style.boxShadow = "none";
+        if (header) {
+            if (window.scrollY > 50) {
+                header.style.padding = "0.75rem 0";
+                header.style.boxShadow = "0 10px 30px rgba(0,0,0,0.5)";
+            } else {
+                header.style.padding = "1.25rem 0";
+                header.style.boxShadow = "none";
+            }
         }
         
-        // Active Scrollspy highlights
         let currentSectionId = "";
         sections.forEach(section => {
             const sectionTop = section.offsetTop - 120;
@@ -179,19 +201,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // 6. SCROLL REVEAL (INTERSECTION OBSERVER)
     // ==========================================
     const revealElements = document.querySelectorAll(".scroll-reveal");
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("reveal-visible");
-                observer.unobserve(entry.target); // Reveal animation occurs once
-            }
+    if (revealElements.length > 0) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("reveal-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
         });
-    }, {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
-    });
-    
-    revealElements.forEach(el => revealObserver.observe(el));
+        
+        revealElements.forEach(el => revealObserver.observe(el));
+    }
 
     // ==========================================
     // 7. GITHUB API INTEGRATION WITH DEVOPS FALLBACKS
@@ -256,7 +280,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function createProjectCardHtml(project) {
-        // Map tech tags smoothly or extract languages
         const tags = project.topics && project.topics.length > 0 
             ? project.topics.slice(0, 4) 
             : [project.language || "DevOps"].filter(Boolean);
@@ -286,55 +309,46 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     }
 
-    function renderFallbackProjects() {
-        projectsGrid.innerHTML = defaultDevOpsProjects.map(p => createProjectCardHtml(p)).join('');
-    }
-
-    // Fetch call execution
-    fetch(`https://api.github.com/users/${githubUser}/repos?sort=updated&per_page=12`)
-        .then(response => {
-            if (!response.ok) throw new Error("API Limit exceeded or network issue.");
-            return response.json();
-        })
-        .then(data => {
-            // Filter forks and map to actual user repositories
-            const publicRepos = data.filter(repo => !repo.fork);
-            
-            if (publicRepos.length < 6) {
-                // If live repositories are fewer than 6, blend fallbacks and real repos
-                const mergedRepos = [...publicRepos];
-                let fallbackIndex = 0;
-                while (mergedRepos.length < 6 && fallbackIndex < defaultDevOpsProjects.length) {
-                    const candidate = defaultDevOpsProjects[fallbackIndex++];
-                    if (!mergedRepos.some(r => r.name.toLowerCase() === candidate.name.toLowerCase())) {
-                        mergedRepos.push(candidate);
+    if (projectsGrid) {
+        fetch(`https://api.github.com/users/${githubUser}/repos?sort=updated&per_page=12`)
+            .then(response => {
+                if (!response.ok) throw new Error("API issues.");
+                return response.json();
+            })
+            .then(data => {
+                const publicRepos = data.filter(repo => !repo.fork);
+                if (publicRepos.length < 6) {
+                    const mergedRepos = [...publicRepos];
+                    let fallbackIndex = 0;
+                    while (mergedRepos.length < 6 && fallbackIndex < defaultDevOpsProjects.length) {
+                        const candidate = defaultDevOpsProjects[fallbackIndex++];
+                        if (!mergedRepos.some(r => r.name.toLowerCase() === candidate.name.toLowerCase())) {
+                            mergedRepos.push(candidate);
+                        }
                     }
+                    projectsGrid.innerHTML = mergedRepos.slice(0, 6).map(r => createProjectCardHtml(r)).join('');
+                } else {
+                    projectsGrid.innerHTML = publicRepos.slice(0, 6).map(r => createProjectCardHtml(r)).join('');
                 }
-                projectsGrid.innerHTML = mergedRepos.slice(0, 6).map(r => createProjectCardHtml(r)).join('');
-            } else {
-                projectsGrid.innerHTML = publicRepos.slice(0, 6).map(r => createProjectCardHtml(r)).join('');
-            }
-        })
-        .catch(err => {
-            // Robust fallback integration in case profile limits prevent API response
-            console.warn("Using localized structural templates for repository rendering:", err.message);
-            renderFallbackProjects();
-        });
+            })
+            .catch(() => {
+                projectsGrid.innerHTML = defaultDevOpsProjects.map(p => createProjectCardHtml(p)).join('');
+            });
+    }
 
     // ==========================================
     // 8. INTERACTIVE CONTACT FORM HANDLER
     // ==========================================
     window.handleFormSubmit = function() {
         const nameVal = document.getElementById("form-name").value;
-        const emailVal = document.getElementById("form-email").value;
-        const msgVal = document.getElementById("form-msg").value;
         const submitBtn = document.getElementById("form-submit-btn");
         const formResponse = document.getElementById("form-response");
+        
+        if (!submitBtn || !formResponse) return;
         
         submitBtn.disabled = true;
         submitBtn.textContent = "Dispatching Stream...";
         
-        // Mocking API transport latency
         setTimeout(() => {
             submitBtn.textContent = "Payload Dispatched!";
             submitBtn.style.background = "linear-gradient(135deg, #10b981 0%, #059669 100%)";
@@ -342,8 +356,8 @@ document.addEventListener("DOMContentLoaded", () => {
             formResponse.textContent = `Transmission Successful! Hello ${nameVal}, your message was buffered successfully.`;
             formResponse.style.color = "var(--accent)";
             
-            // Clear inputs
-            document.getElementById("contact-form").reset();
+            const form = document.getElementById("contact-form");
+            if (form) form.reset();
             
             setTimeout(() => {
                 submitBtn.disabled = false;
