@@ -1,0 +1,330 @@
+/* =========================================================================
+   KANDHA SECURITY SERVICES LIMITED — Core Stylesheet
+   Design tokens: deep navy/black base + brass-gold accent, Cinzel display
+   type (insignia / crest feel) paired with Inter (operational clarity).
+   Signature motif: "badge corner brackets" — tactical ID-card corner frames
+   used across cards, panels and sections to reinforce the security theme.
+   ========================================================================= */
+
+:root {
+  --navy-950: #05070f;
+  --navy-900: #0a0f1f;
+  --navy-850: #0d1326;
+  --navy-800: #10182e;
+  --navy-700: #1b2540;
+  --navy-600: #263257;
+  --gold-600: #a5811d;
+  --gold-500: #c9a227;
+  --gold-400: #dab949;
+  --gold-300: #e8cd6a;
+  --off-white: #f2f0e8;
+  --slate-300: #b7bfd4;
+  --slate-400: #8a93ab;
+  --slate-500: #6b7490;
+  --danger: #b3462c;
+}
+
+* { scroll-behavior: smooth; }
+
+html { scroll-padding-top: 96px; }
+
+body {
+  background-color: var(--navy-900);
+  color: var(--off-white);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display { font-family: 'Cinzel', 'Times New Roman', serif; }
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus visibility (accessibility) */
+a:focus-visible, button:focus-visible, input:focus-visible,
+textarea:focus-visible, select:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--gold-400);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection { background: var(--gold-500); color: var(--navy-950); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--navy-950); }
+::-webkit-scrollbar-thumb { background: var(--navy-700); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-600); }
+
+/* =========================================================================
+   Texture: faint diagonal watch-pattern + radial glow, layered behind body
+   ========================================================================= */
+.bg-ops {
+  background-color: var(--navy-900);
+  background-image:
+    radial-gradient(1200px 600px at 85% -10%, rgba(201,162,39,0.10), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(201,162,39,0.06), transparent 55%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 26px);
+}
+
+/* =========================================================================
+   Signature element: Badge corner brackets
+   ========================================================================= */
+.badge-frame {
+  position: relative;
+}
+.badge-frame::before,
+.badge-frame::after,
+.badge-frame .bc-tr,
+.badge-frame .bc-bl {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--gold-500);
+  opacity: 0.85;
+  transition: all .35s ease;
+}
+.badge-frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.badge-frame::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+.badge-frame .bc-tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+.badge-frame .bc-bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+.badge-frame:hover::before,
+.badge-frame:hover::after,
+.badge-frame:hover .bc-tr,
+.badge-frame:hover .bc-bl {
+  width: 26px;
+  height: 26px;
+  border-color: var(--gold-300);
+}
+
+/* =========================================================================
+   Glassmorphism surfaces
+   ========================================================================= */
+.glass {
+  background: rgba(16, 24, 46, 0.55);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(201, 162, 39, 0.18);
+}
+.glass-strong {
+  background: rgba(10, 15, 31, 0.72);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(201, 162, 39, 0.25);
+}
+
+/* =========================================================================
+   Navbar
+   ========================================================================= */
+#site-header {
+  transition: background-color .3s ease, box-shadow .3s ease, padding .3s ease, border-color .3s ease;
+  border-bottom: 1px solid transparent;
+}
+#site-header.scrolled {
+  background-color: rgba(5, 7, 15, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: rgba(201, 162, 39, 0.2);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+}
+.nav-link { position: relative; }
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: var(--gold-500);
+  transition: width .3s ease;
+}
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.nav-link.active { color: var(--gold-400); }
+
+/* =========================================================================
+   Buttons
+   ========================================================================= */
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
+  color: var(--navy-950);
+  font-weight: 700;
+  transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+  box-shadow: 0 8px 24px -8px rgba(201,162,39,0.55);
+}
+.btn-gold:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 12px 30px -8px rgba(201,162,39,0.7); }
+.btn-gold:active { transform: translateY(0); }
+
+.btn-outline {
+  border: 1.5px solid rgba(201,162,39,0.55);
+  color: var(--off-white);
+  transition: all .25s ease;
+}
+.btn-outline:hover { background: rgba(201,162,39,0.1); border-color: var(--gold-400); transform: translateY(-2px); }
+
+/* =========================================================================
+   Reveal-on-scroll (vanilla JS driven via IntersectionObserver)
+   ========================================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+/* =========================================================================
+   Cards
+   ========================================================================= */
+.service-card, .industry-card, .value-card, .job-card {
+  transition: transform .35s cubic-bezier(.22,.61,.36,1), border-color .35s ease, box-shadow .35s ease;
+}
+.service-card:hover, .industry-card:hover, .value-card:hover, .job-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201,162,39,0.5);
+  box-shadow: 0 20px 45px -20px rgba(0,0,0,0.6);
+}
+
+/* =========================================================================
+   Stat counters / rank-insignia numerals
+   ========================================================================= */
+.stat-number {
+  font-family: 'Cinzel', serif;
+  background: linear-gradient(135deg, var(--gold-300), var(--gold-600));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Divider / eyebrow */
+.eyebrow {
+  letter-spacing: .22em;
+  color: var(--gold-400);
+}
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 28px; height: 1px;
+  background: var(--gold-500);
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* Hairline divider */
+.hairline { height: 1px; background: linear-gradient(90deg, transparent, rgba(201,162,39,.5), transparent); }
+
+/* =========================================================================
+   Marquee (certifications / trust strip)
+   ========================================================================= */
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* =========================================================================
+   Floating action buttons (WhatsApp / Call / Back to top)
+   ========================================================================= */
+#floating-actions { z-index: 60; }
+#floating-actions button, #floating-actions a { transition: transform .25s ease, box-shadow .25s ease; }
+#floating-actions button:hover, #floating-actions a:hover { transform: translateY(-3px) scale(1.05); }
+
+#back-to-top {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+#back-to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, .55); }
+  70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+.pulse-whatsapp { animation: pulse-ring 2.4s infinite; }
+
+/* =========================================================================
+   Hero patrol-status ticker
+   ========================================================================= */
+.dot-live {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #38d67a;
+  box-shadow: 0 0 0 0 rgba(56,214,122,.6);
+  animation: dot-pulse 1.8s infinite;
+}
+@keyframes dot-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(56,214,122,.55); }
+  70% { box-shadow: 0 0 0 8px rgba(56,214,122,0); }
+  100% { box-shadow: 0 0 0 0 rgba(56,214,122,0); }
+}
+
+/* =========================================================================
+   FAQ accordion
+   ========================================================================= */
+.faq-item .faq-icon { transition: transform .3s ease; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s ease;
+}
+.faq-item.open .faq-answer { max-height: 400px; }
+
+/* =========================================================================
+   Testimonial slider
+   ========================================================================= */
+.testimonial-track { transition: transform .6s cubic-bezier(.22,.61,.36,1); }
+
+/* =========================================================================
+   Mobile nav drawer
+   ========================================================================= */
+#mobile-drawer {
+  transform: translateX(100%);
+  transition: transform .4s cubic-bezier(.22,.61,.36,1);
+}
+#mobile-drawer.open { transform: translateX(0); }
+#mobile-overlay {
+  opacity: 0; pointer-events: none; transition: opacity .3s ease;
+}
+#mobile-overlay.open { opacity: 1; pointer-events: auto; }
+
+/* =========================================================================
+   Utility
+   ========================================================================= */
+.text-gold { color: var(--gold-500); }
+.section-pad { padding-top: 6rem; padding-bottom: 6rem; }
+@media (max-width: 768px) {
+  .section-pad { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+}
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--gold-500); color: var(--navy-950);
+  padding: 10px 16px; font-weight: 700;
+}
+.skip-link:focus { left: 12px; top: 12px; }
+
+img { max-width: 100%; }
+
+.form-input {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--navy-600);
+  transition: border-color .25s ease, background .25s ease;
+}
+.form-input:focus {
+  border-color: var(--gold-500);
+  background: rgba(255,255,255,0.06);
+}
